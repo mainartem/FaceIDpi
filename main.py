@@ -20,7 +20,7 @@ else:
 
 while True:
     ret, img = capture.read()
-    copyImage = img.copy()
+    # copyImage = img.copy()
 
     faces = face_cascade.detectMultiScale(img, scaleFactor=1.5, minNeighbors=5, minSize=(20, 20))
     for (x, y, w, h) in faces:
@@ -51,23 +51,23 @@ while True:
 
             # cv2.imwrite("face.jpg", face_img)
 
-            cv2.rectangle(copyImage, (x, y), (x+w, y+h), (0, 255, 255), 5)
-            if len(names) > 0:
-                name = str(names[0])
-            else:
-                name = "Unknown"
-            font = cv2.FONT_HERSHEY_COMPLEX
-            fontScale = 1
-            thickness = 1
-            textSize = cv2.getTextSize(name, font, fontScale, thickness)[0]
-            text_width = textSize[0]
-            text_height = textSize[1]
+            # cv2.rectangle(copyImage, (x, y), (x+w, y+h), (0, 255, 255), 5)
+            # if len(names) > 0:
+            #     name = str(names[0])
+            # else:
+            #     name = "Unknown"
+            # font = cv2.FONT_HERSHEY_COMPLEX
+            # fontScale = 1
+            # thickness = 1
+            # textSize = cv2.getTextSize(name, font, fontScale, thickness)[0]
+            # text_width = textSize[0]
+            # text_height = textSize[1]
 
             # draw.rectangle(((left, bottom - text_height - 10), (right, bottom)), fill=(0, 0, 255), outline=(0, 0, 255))
             # draw.text((left + 6, bottom - text_height - 5), name, fill=(255, 255, 255, 255))
 
-            cv2.rectangle(copyImage, (x, y+h - text_height - 10), (x+w, y+h), (0, 255, 255), 5)
-            cv2.putText(copyImage, name, (x, y+h), font, 1, (255, 255, 255), 1)
+            # cv2.rectangle(copyImage, (x, y+h - text_height - 10), (x+w, y+h), (0, 255, 255), 5)
+            # cv2.putText(copyImage, name, (x, y+h), font, 1, (255, 255, 255), 1)
 
     # Fase
     # face_locations = face_recognition.face_locations(copyImage)
@@ -98,13 +98,13 @@ while True:
         cv2.putText(copyImage, name, (left, bottom) , font, 1, (255,255,255), 2)
     """
 
-    cv2.imshow("face", copyImage)
-    cv2.imshow("from camera", img)
+    # cv2.imshow("face", copyImage)
+    # cv2.imshow("from camera", img)
     k = cv2.waitKey(30) & 0xFF
     if k == 27:
         break
-    if cv2.getWindowProperty('from camera', cv2.WND_PROP_VISIBLE) < 1:
-        break
+    #if cv2.getWindowProperty('from camera', cv2.WND_PROP_VISIBLE) < 1:
+    #    break
 
 capture.release()
-cv2.destroyWindow()
+# cv2.destroyWindow()
